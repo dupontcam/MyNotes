@@ -40,6 +40,5 @@ public class NoteDatabase extends SQLiteOpenHelper {
         String query = "DROP TABLE IF EXISTS " + DATABASE_TABLE;
         db.execSQL(query);
         onCreate(db);
-
     }
 }
