@@ -93,13 +93,14 @@ public class AddNote extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.delete) {
             Toast.makeText(this, "Delete btn", Toast.LENGTH_SHORT).show();
+            finish();
         }
         if(item.getItemId() == R.id.save) {
             Note note = new Note(noteTitle.getText().toString(), noteDetails.getText().toString(), todaysDate, currentTime);
             NoteDatabase db = new NoteDatabase(this);
             db.addNote(note);
             Toast.makeText(this, "Save btn", Toast.LENGTH_SHORT).show();
-
+            finish();
         }
 
         return super.onOptionsItemSelected(item);
