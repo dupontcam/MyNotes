@@ -2,7 +2,7 @@ package br.com.sistematizacaopmd.mynotes.model;
 
 public class Note {
 
-    private int id;
+    private long ID;
     private String title;
     private String content;
     private String date;
@@ -18,12 +18,20 @@ public class Note {
         this.time = time;
     }
 
-    public int getId() {
-        return id;
+    public Note(long ID, String title, String content, String date, String time) {
+        this.ID = ID;
+        this.title = title;
+        this.content = content;
+        this.date = date;
+        this.time = time;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public long getID() {
+        return ID;
+    }
+
+    public void setID(long ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {
