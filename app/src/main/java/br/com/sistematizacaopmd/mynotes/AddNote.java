@@ -20,6 +20,9 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.Calendar;
 
+import br.com.sistematizacaopmd.mynotes.database.NoteDatabase;
+import br.com.sistematizacaopmd.mynotes.model.Note;
+
 public class AddNote extends AppCompatActivity {
 
     Toolbar toolbar;
@@ -92,7 +95,11 @@ public class AddNote extends AppCompatActivity {
             Toast.makeText(this, "Delete btn", Toast.LENGTH_SHORT).show();
         }
         if(item.getItemId() == R.id.save) {
+            Note note = new Note(noteTitle.getText().toString(), noteDetails.getText().toString(), todaysDate, currentTime);
+            NoteDatabase db = new NoteDatabase(this);
+            db.addNote(note);
             Toast.makeText(this, "Save btn", Toast.LENGTH_SHORT).show();
+
         }
 
         return super.onOptionsItemSelected(item);

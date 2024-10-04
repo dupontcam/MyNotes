@@ -1,8 +1,12 @@
 package br.com.sistematizacaopmd.mynotes.database;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+
+import br.com.sistematizacaopmd.mynotes.model.Note;
 
 public class NoteDatabase extends SQLiteOpenHelper {
 
@@ -40,5 +44,17 @@ public class NoteDatabase extends SQLiteOpenHelper {
         String query = "DROP TABLE IF EXISTS " + DATABASE_TABLE;
         db.execSQL(query);
         onCreate(db);
+    }
+
+    public long addNote(Note note){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues c = new ContentValues();
+        c.put(KEY_TITLE, note.getTitle());
+        c.put(KEY_CONTENT, note.getContent());
+        c.put(KEY_DATE, note.getDate());
+        c.put(KEY_TIME, note.getTime());
+        long result = db.insert(DATABASE_TABLE, null, c);
+        Log.d("database", "result: " + result);
+        return result;
     }
 }
