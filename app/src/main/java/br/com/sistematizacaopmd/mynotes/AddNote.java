@@ -1,12 +1,17 @@
 package br.com.sistematizacaopmd.mynotes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
@@ -28,8 +33,10 @@ public class AddNote extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_add_note);
         toolbar = findViewById(R.id.toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.white));
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("New Note");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         noteTitle = findViewById(R.id.noteTitle);
         noteDetails = findViewById(R.id.noteDetails);
@@ -71,5 +78,23 @@ public class AddNote extends AppCompatActivity {
         if(i < 10)
             return "0" + i;
         return String.valueOf(i);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.save_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.delete) {
+            Toast.makeText(this, "Delete btn", Toast.LENGTH_SHORT).show();
+        }
+        if(item.getItemId() == R.id.save) {
+            Toast.makeText(this, "Save btn", Toast.LENGTH_SHORT).show();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
