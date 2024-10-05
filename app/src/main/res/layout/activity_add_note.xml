@@ -20,7 +20,7 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
     <EditText
-        android:id="@+id/noteTitle"
+        android:id="@+id/nTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -47,6 +47,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/noteTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/nTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

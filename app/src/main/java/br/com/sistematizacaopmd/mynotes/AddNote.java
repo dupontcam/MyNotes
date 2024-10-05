@@ -1,6 +1,5 @@
 package br.com.sistematizacaopmd.mynotes;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -41,7 +40,7 @@ public class AddNote extends AppCompatActivity {
         getSupportActionBar().setTitle("New Note");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        noteTitle = findViewById(R.id.noteTitle);
+        noteTitle = findViewById(R.id.nTitle);
         noteDetails = findViewById(R.id.noteDetails);
 
         noteTitle.addTextChangedListener(new TextWatcher() {

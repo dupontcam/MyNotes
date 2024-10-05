@@ -63,6 +63,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
     }
 
     public Note getNote(long id){
+        // select * from databaseName where id = ?
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(DATABASE_TABLE, new String[]{KEY_ID, KEY_TITLE, KEY_CONTENT, KEY_DATE, KEY_TIME}, KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null);
