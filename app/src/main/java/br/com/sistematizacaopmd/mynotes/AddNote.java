@@ -1,5 +1,6 @@
 package br.com.sistematizacaopmd.mynotes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -99,9 +100,15 @@ public class AddNote extends AppCompatActivity {
             NoteDatabase db = new NoteDatabase(this);
             db.addNote(note);
             Toast.makeText(this, "Save btn", Toast.LENGTH_SHORT).show();
-            finish();
+            goToMain();
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void goToMain() {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
 }

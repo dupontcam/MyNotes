@@ -15,8 +15,8 @@ import br.com.sistematizacaopmd.mynotes.model.Note;
 public class NoteDatabase extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 2;
-    private static final String DATABASE_NAME = "notedb";
-    private static final String DATABASE_TABLE = "notestable";
+    private static final String DATABASE_NAME = "notesdb";
+    private static final String DATABASE_TABLE = "notestables";
 
     // columns name for datbase table
     private static final String KEY_ID = "id";
@@ -54,7 +54,7 @@ public class NoteDatabase extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues c = new ContentValues();
         c.put(KEY_TITLE, note.getTitle());
-        c.put(KEY_CONTENT, note.getContent());
+        c.put(KEY_CONTENT, note.getDescription());
         c.put(KEY_DATE, note.getDate());
         c.put(KEY_TIME, note.getTime());
         long result = db.insert(DATABASE_TABLE, null, c);
@@ -82,12 +82,12 @@ public class NoteDatabase extends SQLiteOpenHelper {
 
         String query = "SELECT * FROM " + DATABASE_TABLE;
         Cursor cursor = db.rawQuery(query, null);
-        if (cursor != null){
+        if (cursor.moveToFirst()){
             do{
                 Note note = new Note();
                 note.setID(cursor.getLong(0));
                 note.setTitle(cursor.getString(1));
-                note.setContent(cursor.getString(2));
+                note.setDescription(cursor.getString(2));
                 note.setDate(cursor.getString(3));
                 note.setTime(cursor.getString(4));
                 allNotes.add(note);

@@ -13,12 +13,21 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.List;
+
+import br.com.sistematizacaopmd.mynotes.adapter.Adapter;
+import br.com.sistematizacaopmd.mynotes.database.NoteDatabase;
+import br.com.sistematizacaopmd.mynotes.model.Note;
 
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    RecyclerView listOfNotes;
+    RecyclerView recyclerView;
+    Adapter adapter;
+    List<Note> notes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +37,13 @@ public class MainActivity extends AppCompatActivity {
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        NoteDatabase db = new NoteDatabase(this);
+        notes = db.getNotes();
+        recyclerView = findViewById(R.id.listOfNotes);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new Adapter(this, notes);
+        recyclerView.setAdapter(adapter);
 
-        listOfNotes = findViewById(R.id.listOfNotes);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

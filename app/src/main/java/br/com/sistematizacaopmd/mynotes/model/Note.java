@@ -4,24 +4,24 @@ public class Note {
 
     private long ID;
     private String title;
-    private String content;
+    private String description;
     private String date;
     private String time;
 
     public Note() {
     }
 
-    public Note(String title, String content, String date, String time) {
+    public Note(String title, String description, String date, String time) {
         this.title = title;
-        this.content = content;
+        this.description = description;
         this.date = date;
         this.time = time;
     }
 
-    public Note(long ID, String title, String content, String date, String time) {
+    public Note(long ID, String title, String description, String date, String time) {
         this.ID = ID;
         this.title = title;
-        this.content = content;
+        this.description = description;
         this.date = date;
         this.time = time;
     }
@@ -42,12 +42,12 @@ public class Note {
         this.title = title;
     }
 
-    public String getContent() {
-        return content;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContent(String content) {
-        this.content = content;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDate() {
